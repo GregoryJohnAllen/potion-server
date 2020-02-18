@@ -113,7 +113,7 @@ router.delete("/delete/:id", function(req, res) {
   var userid = req.user.id;
 
   Shop.destroy({
-    where: { id: primaryKey, owner: userid }
+    where: { id:primaryKey, owner:userid }
   }).then(data => {
     return res.json(data);
   }),

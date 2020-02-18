@@ -7,7 +7,6 @@ module.exports = function(req, res, next) {
     next();
   } else {
     var sessionToken = req.headers.authorization;
-    console.log(sessionToken); //Will need to remove this when uploading final code due to security
     sessionToken
       ? verifyToken()
       : res
