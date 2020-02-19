@@ -24,7 +24,7 @@ router.post("/signup", function(req, res) {
       });
     },
     function createError(err) {
-      res.send(500, err.message);
+      res.json({message: err.message});
     }
   );
 });
