@@ -34,4 +34,36 @@ router.post("/create", function(req, res) {
   );
 });
 
+router.get("/rarity/:rarity", function(req, res) {
+  var rarityType = req.params.rarity;
+
+  Potion.findAll({
+    where: {
+      rarity: rarityType
+    }
+  }).then(rarity => {
+    return rarity
+    ? res.json(rarity)
+    :res.send(
+      "what potion you trying to get??"
+      );
+  }),
+  err => res.send(500, err.message)
+})
+
+router.get("/:id", function(req, res) {
+  var potId = req.params.id
+
+  Potion.findOne({
+    where: { id: potId}
+  }).then(pot => {
+    return pot
+    ? res.json(pot)
+    : res.send(
+      "That potion does not exist anymore"
+    )
+  }),
+  err => res.send(500, err.message)
+})
+
 module.exports = router;

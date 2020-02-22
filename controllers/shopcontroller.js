@@ -31,6 +31,7 @@ router.post("/create", function(req, res) {
   var locationText = req.body.definition.location;
   var playerNumText = req.body.definition.playerNum;
   var levelNumText = req.body.definition.levelNum;
+  var stockShopPop = req.body.definition.stockName;
 
   Shop.create({
     shopname: shopNameText,
@@ -39,7 +40,8 @@ router.post("/create", function(req, res) {
     location: locationText,
     playerNum: playerNumText,
     levelNum: levelNumText,
-    owner: owner
+    owner: owner,
+    stockName: stockShopPop
   }).then(
     function createSuccess(
       shopname,
@@ -47,7 +49,8 @@ router.post("/create", function(req, res) {
       description,
       location,
       playerNum,
-      levelNum
+      levelNum,
+      stockName
     ) {
       res.json({
         shopname: shopname,
@@ -55,7 +58,8 @@ router.post("/create", function(req, res) {
         description: description,
         location: location,
         playerNum: playerNum,
-        levelNum: levelNum
+        levelNum: levelNum,
+        stockName: stockName
       });
     },
     function createError(err) {
